@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Goradiya Rohit | IT Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080c10;
+    --bg2: #0d1117;
+    --bg3: #111820;
+    --card: #111822;
+    --card2: #141e28;
+    --border: rgba(0,200,150,0.15);
+    --border2: rgba(0,200,150,0.3);
+    --accent: #00c896;
+    --accent2: #00e5b0;
+    --accent3: rgba(0,200,150,0.08);
+    --text: #e2eaf2;
+    --muted: #6e8898;
+    --muted2: #8fa8bc;
+    --mono: 'Share Tech Mono', monospace;
+    --sans: 'Outfit', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* SCANLINE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 1rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--muted2);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 6rem 0; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 60%;
+    background: var(--accent);
+    margin-top: 0.4rem;
+    border-radius: 2px;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,150,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,150,0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    top: -100px; right: -100px;
+    background: radial-gradient(circle, rgba(0,200,150,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.12em;
+  }
+  .hero-tag::before { content: '> '; }
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  h1 span { color: var(--accent); }
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--muted2);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 0.75rem 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #080c10;
+    border: none;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .btn-outline:hover { background: var(--accent3); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+    flex-wrap: wrap;
+  }
+  .stat { border-left: 2px solid var(--accent); padding-left: 1rem; }
+  .stat-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    font-family: var(--mono);
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; margin-top: 2px; }
+
+  /* ABOUT */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--muted2);
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+  }
+  .about-text p.editable {
+    border: 1.5px dashed rgba(0,200,150,0.25);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    background: var(--accent3);
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .info-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--muted2);
+  }
+  .info-list .key {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    min-width: 100px;
+    letter-spacing: 0.05em;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .skill-card-title {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .skill-card-title::before { content: '//'; color: var(--muted); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    padding: 0.3rem 0.75rem;
+    background: var(--accent3);
+    border: 1px solid rgba(0,200,150,0.2);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--accent2);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-card.placeholder {
+    border-style: dashed;
+    border-color: rgba(0,200,150,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 180px;
+    cursor: default;
+  }
+  .project-card.placeholder .add-icon {
+    font-size: 2rem;
+    color: rgba(0,200,150,0.25);
+    line-height: 1;
+  }
+  .project-card.placeholder p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--muted2);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .project-tech span {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: var(--accent3);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  /* EXPERIENCE / EDUCATION */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1px 1fr;
+    gap: 0 2rem;
+    padding-bottom: 2.5rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .tl-date {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: right;
+    padding-top: 0.15rem;
+    letter-spacing: 0.05em;
+  }
+  .tl-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg2);
+    flex-shrink: 0;
+    margin-top: 4px;
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .tl-track {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    margin-top: 4px;
+  }
+  .tl-content { padding-bottom: 0; }
+  .tl-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .tl-org {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .tl-desc {
+    font-size: 0.9rem;
+    color: var(--muted2);
+    line-height: 1.7;
+  }
+  .tl-desc.editable {
+    border: 1.5px dashed rgba(0,200,150,0.2);
+    border-radius: 5px;
+    padding: 0.6rem 0.85rem;
+    background: var(--accent3);
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s;
+  }
+  .cert-card:hover { border-color: var(--border2); }
+  .cert-card.placeholder {
+    border-style: dashed;
+    border-color: rgba(0,200,150,0.12);
+    opacity: 0.6;
+  }
+  .cert-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: var(--accent3);
+    border: 1px solid rgba(0,200,150,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .cert-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .cert-issuer { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+  /* CONTACT */
+  #contact { background: var(--bg2); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-intro { font-size: 1rem; color: var(--muted2); line-height: 1.8; margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--border2); background: var(--card2); }
+  .contact-link.placeholder { opacity: 0.45; cursor: default; border-style: dashed; }
+  .cl-label { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .cl-value { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+  .cl-icon { font-size: 1.2rem; width: 24px; text-align: center; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+  }
+  footer p { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; }
+  footer span { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.2s; }
+  .hero-subtitle { animation-delay: 0.3s; }
+  .hero-cta { animation-delay: 0.4s; }
+  .hero-stats { animation-delay: 0.5s; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline-item { grid-template-columns: 80px 1px 1fr; gap: 0 1rem; }
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .container { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">gr.dev</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-tag">Hello, World!</p>
+      <h1>Goradiya<br><span>Rohit</span></h1>
+      <p class="hero-subtitle">IT Engineering Student · Backend Developer · Problem Solver</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">3rd</div>
+          <div class="stat-label">Year B.Tech</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">IT</div>
+          <div class="stat-label">Engineering</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">// 01. about_me</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a 3rd year Information Technology engineering student with a passion for building scalable, efficient systems. I enjoy solving real-world problems through clean code and logical thinking.</p>
+        <p class="editable">✏️ [ Add your personal bio here — your interests, goals, or what drives you as a developer ]</p>
+        <p class="editable">✏️ [ Mention any clubs, communities, or activities you're part of ]</p>
+      </div>
+      <div>
+        <ul class="info-list">
+          <li><span class="key">name</span> Goradiya Rohit</li>
+          <li><span class="key">degree</span> B.Tech – IT Engineering</li>
+          <li><span class="key">year</span> 3rd Year (6th Semester)</li>
+          <li><span class="key">location</span> Gujarat, India</li>
+          <li><span class="key">college</span> [ Your College Name ]</li>
+          <li><span class="key">cgpa</span> [ Your CGPA ]</li>
+          <li><span class="key">status</span> Open to Internships</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">// 02. tech_stack</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-card-title">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">Java</span>
+          <span class="tag">SQL</span>
+          <span class="tag">[ Add more ]</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Operating Systems</div>
+        <div class="skill-tags">
+          <span class="tag">Linux</span>
+          <span class="tag">Ubuntu</span>
+          <span class="tag">Windows</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Core CS Subjects</div>
+        <div class="skill-tags">
+          <span class="tag">Computer Networks</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">OS Concepts</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Databases</div>
+        <div class="skill-tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">[ Add more ]</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Tools & Others</div>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">[ IDE / Editor ]</span>
+          <span class="tag">[ Add tools ]</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Currently Learning</div>
+        <div class="skill-tags">
+          <span class="tag">[ Skill 1 ]</span>
+          <span class="tag">[ Skill 2 ]</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">// 03. my_work</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">project_01</div>
+        <div class="project-title">[ Project Name ]</div>
+        <p class="project-desc">[ Describe your project — what it does, what problem it solves, and what you built. 2-3 sentences work great. ]</p>
+        <div class="project-tech">
+          <span>Java</span>
+          <span>MySQL</span>
+          <span>[ Tech used ]</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">project_02</div>
+        <div class="project-title">[ Project Name ]</div>
+        <p class="project-desc">[ Describe your project — what it does, what problem it solves, and what you built. ]</p>
+        <div class="project-tech">
+          <span>[ Tech ]</span>
+          <span>[ Tech ]</span>
+        </div>
+      </div>
+
+      <div class="project-card placeholder">
+        <div class="add-icon">+</div>
+        <p>Add more projects here</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">// 04. education</p>
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="tl-date">2022 – Present</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-track"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">B.Tech – Information Technology</div>
+          <div class="tl-org">[ Your College / University ]</div>
+          <div class="tl-desc">Currently in 3rd year. Core subjects: Java, Data Structures, Computer Networks, Operating Systems, DBMS, SQL.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">[ Year ]</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-track"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">12th Standard (HSC)</div>
+          <div class="tl-org">[ Your School / Board ]</div>
+          <div class="tl-desc tl-desc editable">✏️ [ Add your percentage / grade and any notable achievement ]</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">[ Year ]</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-track"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">10th Standard (SSC)</div>
+          <div class="tl-org">[ Your School / Board ]</div>
+          <div class="tl-desc tl-desc editable">✏️ [ Add your percentage / grade ]</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <p class="section-label">// 05. achievements</p>
+    <h2 class="section-title">Certifications & Achievements</h2>
+    <div class="cert-grid">
+
+      <div class="cert-card placeholder">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">[ Certification Name ]</div>
+          <div class="cert-issuer">[ Platform / Issuer ]</div>
+        </div>
+      </div>
+
+      <div class="cert-card placeholder">
+        <div class="cert-icon">🏆</div>
+        <div>
+          <div class="cert-name">[ Achievement / Award ]</div>
+          <div class="cert-issuer">[ Organization / Event ]</div>
+        </div>
+      </div>
+
+      <div class="cert-card placeholder">
+        <div class="cert-icon">📜</div>
+        <div>
+          <div class="cert-name">[ Add Certification ]</div>
+          <div class="cert-issuer">[ Issuer ]</div>
+        </div>
+      </div>
+
+      <div class="cert-card placeholder">
+        <div class="cert-icon">⭐</div>
+        <div>
+          <div class="cert-name">[ Hackathon / Competition ]</div>
+          <div class="cert-issuer">[ Event Name ]</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">// 06. contact</p>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">I'm currently looking for internship opportunities and interesting projects. Whether you have a question, an opportunity, or just want to say hi — my inbox is always open.</p>
+        <a href="mailto:your@email.com" class="btn btn-primary">Send Email</a>
+      </div>
+      <div class="contact-links">
+
+        <a href="mailto:[ your@email.com ]" class="contact-link placeholder">
+          <span class="cl-icon">📧</span>
+          <div>
+            <div class="cl-label">Email</div>
+            <div class="cl-value">[ your@email.com ]</div>
+          </div>
+        </a>
+
+        <a href="#" class="contact-link placeholder">
+          <span class="cl-icon">💼</span>
+          <div>
+            <div class="cl-label">LinkedIn</div>
+            <div class="cl-value">[ linkedin.com/in/yourprofile ]</div>
+          </div>
+        </a>
+
+        <a href="#" class="contact-link placeholder">
+          <span class="cl-icon">🐙</span>
+          <div>
+            <div class="cl-label">GitHub</div>
+            <div class="cl-value">[ github.com/yourusername ]</div>
+          </div>
+        </a>
+
+        <a href="#" class="contact-link placeholder">
+          <span class="cl-icon">📱</span>
+          <div>
+            <div class="cl-label">Phone</div>
+            <div class="cl-value">[ +91 XXXXX XXXXX ]</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Designed & Built by <span>Goradiya Rohit</span> · <span>2025</span></p>
+  </div>
+</footer>
+
+</body>
+</html>
