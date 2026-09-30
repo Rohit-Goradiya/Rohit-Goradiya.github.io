@@ -1,9 +1,9 @@
 <h1 align="center">Hi, I'm Rohit Goradiya 👋</h1>
 
 <p align="center">
-  <b>IT Engineering Student · Backend Developer · Problem Solver</b><br>
+  <b>IT Engineering Student ·Learning Backend Development · Problem Solver</b><br>
   3rd-year B.E. student building clean, logical, scalable software with Java and SQL.<br>
-  📍 Rājkot, Gujarat, India
+  📍 Rajkot, Gujarat, India
 </p>
 
 <p align="center">
