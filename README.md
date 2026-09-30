@@ -16,11 +16,11 @@
 
 ## 👨‍💻 About Me
 
-I'm an Information Technology student who enjoys solving real-world problems through clean code and logical thinking. I'm focused on backend development and on understanding how systems work under the hood.
+An Information Technology enthusiastic student who enjoys solving real-world problems through clean code and logical thinking. I'm focused on backend development and on understanding how systems work under the hood.
 
 - 🎓 B.E. in Information Technology at **V.V.P. Engineering College** (2024 – 2028)
 - 🔭 Currently building: **my developer portfolio** ([live here](https://Rohit-Goradiya.github.io))
-- 🌱 Currently learning: **Advanced Java** and **backend technologies**
+- 🌱 Currently learning: **Advanced Java** and **backend technologies** 
 - 💼 **Open to internships** and interesting projects
 - 💬 Ask me about: Java, SQL, DBMS, Operating Systems, Computer Networks
 
@@ -35,7 +35,6 @@ I'm an Information Technology student who enjoys solving real-world problems thr
 **Operating Systems**
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
 
 **Tools**
@@ -44,7 +43,7 @@ I'm an Information Technology student who enjoys solving real-world problems thr
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
 
-**Core CS:** Data Structures · OOP · DBMS · Operating Systems · Computer Networks
+**Core CS:** Data Structures | OOP | DBMS | Operating Systems | Computer Networks | cyber security | PostgreSQL | Web technologies | 
 
 ## 🚀 Projects
 
@@ -66,6 +65,5 @@ I'm looking for internship opportunities. If you have a question, an opportunity
 
 - 📧 [rohitgoradiya9194@gmail.com](mailto:rohitgoradiya9194@gmail.com)
 - 💼 [LinkedIn](https://www.linkedin.com/in/rohit-goradiya-b34a49318)
-- 🌐 [Portfolio](https://Rohit-Goradiya.github.io)
 
 <p align="center">⭐ Thanks for visiting!</p>
